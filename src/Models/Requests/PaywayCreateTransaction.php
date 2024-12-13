@@ -27,6 +27,8 @@ class PaywayCreateTransaction
         public ?string                   $return_url = null,
         public ?string                   $continue_success_url = null,
         public ?string                   $return_params = null,
+        public ?string                   $return_deeplink = null,
+        public ?string                   $custom_fields = null,
         public ?float                    $shipping = null,
     )
     {
@@ -51,6 +53,8 @@ class PaywayCreateTransaction
         ?string                    $return_url = null,
         ?string                    $continue_success_url = null,
         ?string                    $return_params = null,
+        ?string                    $return_deeplink = null,
+        ?string                    $custom_fields = null,
         ?float                     $shipping = null,
     )
     {
@@ -69,6 +73,8 @@ class PaywayCreateTransaction
         $this->return_url = $return_url ?? $copy->return_url;
         $this->continue_success_url = $continue_success_url ?? $copy->continue_success_url;
         $this->return_params = $return_params ?? $copy->return_params;
+        $this->return_deeplink = $return_deeplink ?? $copy->return_deeplink;
+        $this->custom_fields = $custom_fields ?? $copy->custom_fields;
         $this->shipping = $shipping ?? $copy->shipping;
     }
 
@@ -89,6 +95,8 @@ class PaywayCreateTransaction
             'return_url' => $this->return_url,
             'continue_success_url' => $this->continue_success_url,
             'return_params' => $this->return_params,
+            'return_deeplink' => $this->return_deeplink,
+            'custom_fields' => $this->custom_fields,
             'shipping' => $this->shipping,
         ];
     }
