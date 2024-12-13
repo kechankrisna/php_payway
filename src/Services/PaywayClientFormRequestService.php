@@ -33,6 +33,7 @@ class PaywayClientFormRequestService
             payment_option: $transaction->option->name,
             currency: $transaction->currency->name,
             return_url: $encoded_return_url,
+            return_params: $transaction->return_params ?? "",
             return_deeplink: $transaction->return_deeplink ?? "",
             custom_fields: $transaction->custom_fields ?? "",
         );

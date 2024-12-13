@@ -32,10 +32,12 @@ test('', function () {
         new PaywayTransactionItem(name: "ទំនិញ 2", quantity: 1, price: 2,),
         new PaywayTransactionItem(name: "ទំនិញ 3", quantity: 1, price: 3,),
     ];
+    $req_time = $service->uniqueReqTime();
+    $amount = 6.00;
     $transaction = new PaywayCreateTransaction(
         tran_id: $tran_id,
-        req_time: $service->uniqueReqTime(),
-        amount: 6.00,
+        req_time: $req_time,
+        amount: $amount,
         items: $items,
         firstname: 'Miss',
         lastname: 'My Lekha',
@@ -46,6 +48,13 @@ test('', function () {
         currency: PaywayTransactionCurrency::USD,
         return_url: "https://stage.mylekha.app",
         shipping: 0.0,
+        return_params: base64_encode(json_encode([
+            "tran_id" => "$tran_id",
+            "req_time" => "$req_time",
+            "amount" => "$amount",
+            "sale_id" => '1',
+            "payment_type_id" => '1',
+        ])),
         return_deeplink: base64_encode(json_encode([
             "ios_scheme" => "https://mylekha.org/integrate/payway/transactions/$tran_id/success",
             "tran_id" => "$tran_id"
